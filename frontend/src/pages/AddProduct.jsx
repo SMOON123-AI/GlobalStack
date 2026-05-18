@@ -10,7 +10,7 @@ function AddProduct() {
   const handleAdd = async () => {
 
     await axios.post(
-      'http://localhost:5000/api/products',
+      'https://globalstack.onrender.com/api/products',
       {
         name,
         price,
