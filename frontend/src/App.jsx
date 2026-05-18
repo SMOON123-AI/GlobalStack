@@ -7,7 +7,7 @@ import AddProduct from './pages/AddProduct';
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/GlobalStack">
 
       <nav class='header-container'>
 

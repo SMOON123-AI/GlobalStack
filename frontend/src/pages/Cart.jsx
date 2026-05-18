@@ -1,6 +1,31 @@
+import { useEffect, useState } from 'react';
+
 function Cart() {
 
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+
+    const storedCart =
+      JSON.parse(localStorage.getItem('cart')) || [];
+
+    setCart(storedCart);
+
+  }, []);
+
+  const removeItem = (index) => {
+
+    const updatedCart = [...cart];
+
+    updatedCart.splice(index, 1);
+
+    setCart(updatedCart);
+
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(updatedCart)
+    );
+  };
 
   const total = cart.reduce((sum, item) => {
     return sum + item.price;
@@ -20,6 +45,12 @@ function Cart() {
           <h3>{item.name}</h3>
 
           <p>₹{item.price}</p>
+
+          <button
+            onClick={() => removeItem(index)}
+          >
+            Remove
+          </button>
 
         </div>
 
